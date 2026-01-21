@@ -66,7 +66,7 @@
             <div class="md:col-span-2">
                 <label class="label">المحطة</label>
                 <select name="station_id" class="{{ $input('station_id') }}">
-                    <option value="">— بدون محطة —</option>
+                    <option value="">— كل محطات —</option>
                     @foreach($stations as $station)
                         <option value="{{ $station->id }}"
                             @selected(old('station_id', $vehicle->station_id ?? '') == $station->id)>

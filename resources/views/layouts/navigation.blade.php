@@ -27,7 +27,7 @@
                         ⛽ تعبئة الوقود جديد
                     </a> --}}
                     <a href="{{ route('fuel') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-yellow-500 hover:bg-yellow-600 shadow-md hover:scale-105 transition-transform">
-                        📊 التقارير
+                        📊 تقارير تعبئة الوقود
                     </a>
                       <a href="{{ route('fuel.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-teal-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
                         ⛽ تعبئة الوقود

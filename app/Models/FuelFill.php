@@ -11,10 +11,11 @@ class FuelFill extends Model
      protected $fillable = [
         'vehicle_id',
         'station_id',
-        'filled_at',
     ];
 
-    protected $dates = ['filled_at'];
+     protected $casts = [
+        'filled_at' => 'datetime',
+    ];
 
     public function vehicle()
     {

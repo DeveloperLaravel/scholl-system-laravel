@@ -1,53 +1,52 @@
 <x-app-layout>
-    <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-6 text-center">📊 تقرير الوقود - {{ $vehicle->plate_number }}</h2>
+<div class="min-h-screen bg-gray-100 dark:bg-gray-900 p-4 pt-24">
 
-        <div class="overflow-x-auto bg-white shadow rounded-xl">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+
+        {{-- العنوان --}}
+        <div class="mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                ⛽ تقرير تعبئة الوقود
+            </h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                السيارة: {{ $vehicle->name ?? 'غير محدد' }} — {{ $vehicle->qr_code }}
+            </p>
+        </div>
+
+        {{-- الجدول --}}
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow overflow-x-auto">
+            <table class="w-full text-sm text-center">
+                <thead class="bg-gray-200 dark:bg-gray-700">
                     <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">كمية الوقود</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">تاريخ التعبئة</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">المدة المتبقية</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">فرق الوقت</th>
+                        <th class="p-3">#</th>
+                        <th>تاريخ التعبئة</th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach($fuelings as $fuel)
-                        @php
-                            $expiry = $fuel->created_at->addDays(3);
-                            $remaining = now()->diffInDays($expiry, false);
-                            $expired = $remaining < 0;
-                            $diff = now()->diffForHumans($fuel->created_at, ['short' => true]);
-                        @endphp
-                        <tr>
-                            <td class="px-6 py-4">{{ $loop->iteration }}</td>
-                            <td class="px-6 py-4">{{ $fuel->amount }} لتر</td>
-                            <td class="px-6 py-4">{{ $fuel->created_at->format('Y-m-d H:i') }}</td>
-                            <td class="px-6 py-4">
-                                @if(!$expired)
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm font-semibold">
-                                        {{ $remaining }} يوم متبقي
-                                    </span>
-                                @else
-                                    <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-sm font-semibold">
-                                        انتهت المدة
-                                    </span>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4">{{ $diff }}</td>
+                <tbody>
+                    @forelse($fuelings as $fuel)
+                        <tr class="border-b dark:border-gray-600">
+                            <td class="p-3">{{ $loop->iteration }}</td>
+                            <td>{{ $fuel->filled_at->format('Y-m-d H:i') }}</td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="2" class="p-6 text-gray-400">
+                                لا توجد تعبئات
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
 
-        <div class="mt-6 text-center">
-            <a href="{{ route('vehicles.index') }}"
-               class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
-                🔙 العودة للسيارات
+        {{-- رجوع --}}
+        <div class="mt-6">
+            <a href="{{ url()->previous() }}"
+               class="px-4 py-2 rounded-xl bg-gray-600 text-white">
+               ⬅ رجوع
             </a>
         </div>
+
     </div>
+</div>
 </x-app-layout>

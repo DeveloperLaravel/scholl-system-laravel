@@ -11,14 +11,17 @@ class Station extends Model
         protected $fillable = ['name', 'location'];
 
 // Station.php
-  public function vehicles()
-    {
-        return $this->hasMany(Vehicle::class);
-    }
+//   public function vehicles()
+//     {
+//         return $this->hasMany(Vehicle::class);
+//     }
 public function fuelFills() { 
     return $this->hasMany(FuelFill::class); 
     }
-    
+    public function vehicle()
+{
+    return $this->belongsTo(Vehicle::class);
+}
     public function users() {
         return $this->hasMany(User::class);
     }

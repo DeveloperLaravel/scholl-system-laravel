@@ -8,7 +8,10 @@
             <h2 class="text-2xl sm:text-3xl font-extrabold text-red-600 dark:text-yellow-400">
                 🚗 إدارة السيارات
             </h2>
-     
+            {{-- <a href="{{ route('vehicles.create') }}" 
+               class="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-indigo-500 hover:to-blue-500 text-white px-4 py-2 rounded-lg shadow-lg transition-transform hover:scale-105">
+               + إضافة سيارة
+            </a> --}}
         </div>
 
         {{-- رسالة نجاح --}}

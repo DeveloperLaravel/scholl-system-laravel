@@ -48,20 +48,24 @@ Route::post('/fuel/fill', [FuelFillController::class, 'store'])
     ->name('fuel.scan.store');
 
     
-    Route::get('/fuel', [FuelFillController::class, 'fuel'])
-    ->name('fuel');
+    // Route::get('/fuel', [FuelFillController::class, 'fuel'])
+    // ->name('fuel');
 
 
-// عرض تفاصيل السيارة
-Route::get('/fuels/{fuel}', [FuelFillController::class, 'showfuel'])->name('fuel.show');
+// // عرض تفاصيل السيارة
+// Route::get('/fuels/{fuel}', [FuelFillController::class, 'showfuel'])->name('fuel.show');
 
-// تقرير التعبئة لكل سيارة
-Route::get('/fuels/{fuel}/fuel-report', [FuelFillController::class, 'fuelReport'])->name('fuel.report');
+// // تقرير التعبئة لكل سيارة
+// Route::get('/vehicles/{vehicle}/fuel-report', [FuelFillController::class, 'fuelReport'])->name('fuel.report');
 
 // تقرير شامل لكل السيارات (اختياري)
 Route::get('/reports', [FuelFillController::class, 'allReports'])->name('reports.index');
 
 
+
+
+Route::get('/fuels/report/pdf', [FuelFillController::class, 'reportPdf'])
+    ->name('fuel.pdf');
 
 
 

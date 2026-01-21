@@ -36,10 +36,9 @@
 
 
         @include('layouts.navigation')
-        <div class="px-3">
-            {{ $slot }}
-
-        </div>
+       <div {{ $attributes->merge(['class' => 'min-h-screen bg-gradient-to-br from-red-100 via-yellow-50 to-red-200 dark:from-gray-900 dark:to-gray-800 p-4 sm:p-6 md:p-8']) }}>
+        {{ $slot }}
+    </div>
 
 
 <!-- ================= THEME SCRIPT ================= -->
