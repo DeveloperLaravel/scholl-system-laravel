@@ -2,6 +2,8 @@
 nixPkgs = [
   "nodejs_18",
   "php82",
+  "php82Packages.composer",
+
   "php82Extensions.pdo",
   "php82Extensions.pdo_mysql",
   "php82Extensions.mbstring",
@@ -14,9 +16,9 @@ nixPkgs = [
 
 [phases.build]
 cmds = [
+  "composer install --no-dev --optimize-autoloader",
   "npm install",
-  "npm run build",
-  "composer install --no-dev --optimize-autoloader"
+  "npm run build"
 ]
 
 [start]
