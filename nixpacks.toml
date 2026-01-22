@@ -10,7 +10,7 @@ nixPkgs = [
 
 [phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader",
+  "composer install --no-dev --optimize-autoloader --no-interaction",
   "npm install",
   "npm run build",
   "php artisan key:generate --force",
