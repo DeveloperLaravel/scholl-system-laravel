@@ -1,6 +1,8 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
+    
+  "name": "school-system",
+  "version": "1.0.0",
+  "type": "module",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
