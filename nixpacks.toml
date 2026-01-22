@@ -4,25 +4,17 @@ providers = ["php", "node"]
 nixPkgs = [
   "php82",
   "php82Packages.composer",
+  "php82Extensions.gd",
   "nodejs_20"
 ]
 
 [phases.install]
 cmds = [
   "composer install --no-dev --optimize-autoloader",
-
   "npm install",
   "npm run build",
-
   "php artisan key:generate --force",
-
-  "php artisan migrate --force",
-
-  "if [ \"$RUN_SEEDER\" = \"true\" ]; then php artisan db:seed --force; fi",
-
-  "php artisan config:clear",
-  "php artisan route:clear",
-  "php artisan view:clear"
+  "php artisan migrate --force"
 ]
 
 [start]
