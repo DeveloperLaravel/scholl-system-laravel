@@ -75,7 +75,6 @@
         <div class="flex flex-col gap-3 p-4">
 
             @auth
-                @if(auth()->user()->role === 'admin')
           <a href="{{ route('stations.index') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-red-500 hover:bg-red-600 shadow-md hover:scale-105 transition-transform">
                         🏭 المحطات
                     </a>
@@ -94,14 +93,6 @@
                         <a href="{{ route('vehicles.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:scale-105 transition-transform">
                         ⛽  بيانات مطلوبة 
                     </a>
-                @endif
-
-                @if(auth()->user()->role === 'employee')
-                    <a href="{{ route('vehicles.index') }}" class="py-2 px-3 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:scale-105 transition">⛽ السيارات</a>
-                    <a href="{{ route('fuel') }}" class="py-2 px-3 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 shadow-md hover:scale-105 transition">⛽ تعبئة الوقود</a>
-                    <a href="{{ route('fuel.create') }}" class="py-2 px-3 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 shadow-md hover:scale-105 transition">⛽ تعبئة الوقود جديد</a>
-                    <a href="{{ route('fuel') }}" class="py-2 px-3 rounded-lg font-semibold text-white bg-yellow-500 hover:bg-yellow-600 shadow-md hover:scale-105 transition">📊 التقارير</a>
-                @endif
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
