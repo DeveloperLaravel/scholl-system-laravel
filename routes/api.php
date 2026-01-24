@@ -16,21 +16,15 @@ use App\Http\Controllers\Api\AuthController;
 | - بيانات المستخدم (user)
 |
 */
+Route::post('/login', [AuthController::class, 'login']);
 
-// تسجيل مستخدم جديد
-Route::post('/register', [AuthController::class, 'register'])->name('api.register');
+Route::post('/register', [AuthController::class, 'register']);
 
-// تسجيل الدخول
-Route::post('/login', [AuthController::class, 'login'])->name('api.login');
+Route::get('/dashboard', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
 
-// كل ما يلي يحتاج توكن (auth:sanctum)
 Route::middleware('auth:sanctum')->group(function () {
-
-    // بيانات المستخدم
-    Route::get('/user', function (Request $request) {
-        return response()->json($request->user());
-    })->name('api.user');
-
-    // تسجيل الخروج
-    Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
+    Route::get('/user', fn (Request $r) => $r->user());
+    Route::post('/logout', [AuthController::class, 'logout']);
 });

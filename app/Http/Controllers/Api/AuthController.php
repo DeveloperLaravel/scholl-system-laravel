@@ -11,47 +11,62 @@ use App\Models\User;
 class AuthController extends Controller
 {
     // تسجيل مستخدم جديد
-    public function register(Request $request)
+   public function login(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6|confirmed', // password_confirmation
-        ]);
-
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-
-        $token = $user->createToken('flutter-token')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ], 201);
-    }
-
-    // تسجيل الدخول
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
-            'password' => 'required|string',
+            'password' => 'required',
         ]);
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json(['message' => 'بيانات غير صحيحة'], 401);
+        $user = User::where('email', $request->email)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'message' => 'بيانات الدخول غير صحيحة',
+            ], 401);
         }
 
-        $user = $request->user();
-        $token = $user->createToken('flutter-token')->plainTextToken;
+        $token = $user->createToken('mobile-token')->plainTextToken;
 
         return response()->json([
-            'user' => $user,
             'token' => $token,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+            ],
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        // ✅ Validation (Regestring Rules)
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // ✅ Create User
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        // ✅ Create Token (Mobile)
+        $token = $user->createToken('mobile-token')->plainTextToken;
+
+        // ✅ Response
+        return response()->json([
+            'message' => 'تم إنشاء الحساب بنجاح',
+            'token' => $token,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+            ],
+        ], 201);
     }
 
     // تسجيل الخروج
