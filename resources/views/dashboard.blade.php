@@ -16,7 +16,7 @@
 
         <x-dashboard-card 
             title="الموظفون" 
-            :count="\App\Models\User::where('role','employee')->count()" 
+            :count="\App\Models\FuelFill::whereDate('filled_at', now()->addDay()->toDateString())->count()" 
             description="عدد الموظفين النشطين"
             colorFrom="blue-400" 
             colorVia="indigo-300" 

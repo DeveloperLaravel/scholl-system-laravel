@@ -19,7 +19,6 @@
 
             @auth
                 <!-- Admin Links -->
-                @if(auth()->user()->role === 'admin')
                     <a href="{{ route('stations.index') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-red-500 hover:bg-red-600 shadow-md hover:scale-105 transition-transform">
                         🏭 المحطات
                     </a>
@@ -27,8 +26,9 @@
                         ⛽ تعبئة الوقود جديد
                     </a> --}}
                     <a href="{{ route('fuel') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-yellow-500 hover:bg-yellow-600 shadow-md hover:scale-105 transition-transform">
-                        📊 تقارير تعبئة الوقود
+                        📊 التقارير
                     </a>
+                  
                       <a href="{{ route('fuel.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-teal-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
                         ⛽ تعبئة الوقود
                     </a>
@@ -38,30 +38,12 @@
                         <a href="{{ route('vehicles.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:scale-105 transition-transform">
                         ⛽  بيانات مطلوبة 
                     </a>
-                @endif
 
-                <!-- Employee Links -->
-                @if(auth()->user()->role === 'employee')
-                
-                 
-                  
                     {{-- <a href="{{ route('fuel.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
                         ⛽ تعبئة الوقود جديد
                     </a> --}}
-                    <a href="{{ route('fuel') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-yellow-500 hover:bg-yellow-600 shadow-md hover:scale-105 transition-transform">
-                        📊 التقارير
-                    </a>
-                      <a href="{{ route('fuel.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-teal-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
-                        ⛽ تعبئة الوقود
-                    </a>
-                         <a href="{{ route('vehicles.index') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
-                         اكواد تم صرفهم
-                    </a>
-                        <a href="{{ route('vehicles.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:scale-105 transition-transform">
-                        ⛽  بيانات مطلوبة 
-                    </a>
-                @endif
-
+                 
+                 
                 <!-- Logout -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
