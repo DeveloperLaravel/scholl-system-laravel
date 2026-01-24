@@ -21,10 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 // routes/web.php
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-
-    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 
     // 👨‍💼 Admin فقط
         Route::resource('vehicles', VehicleController::class);

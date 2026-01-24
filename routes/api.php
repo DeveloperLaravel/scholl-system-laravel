@@ -17,16 +17,13 @@ use App\Http\Controllers\Api\AuthController;
 |
 */
 
+Route::get('/dashboard', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
     // تسجيل مستخدم جديد
     Route::post('/register', [AuthController::class, 'register']);
 
     // تسجيل الدخول
     Route::post('/login', [AuthController::class, 'login']);
-
     // تسجيل الخروج
     Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
-
-    // بيانات المستخدم
-    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-        return response()->json($request->user());
-    });
