@@ -6,11 +6,11 @@
             <a href="{{ route('dashboard') }}">
 
 
-            <img src="{{ asset('images/2.jpg') }}" class="w-12 h-12 rounded-full shadow-lg shrink-0 animate-pulse">
+            <img src="{{ asset('images/2.png') }}" class="w-12 h-12 rounded-full shadow-lg shrink-0 animate-pulse">
             </a>
 
             <span class="hidden sm:inline text-lg md:text-2xl font-extrabold text-red-700 dark:text-yellow-400 tracking-wide">
-                محطة جالو
+              إدارة المستشفى
             </span>
         </div>
 
@@ -28,7 +28,7 @@
                     <a href="{{ route('fuel') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-yellow-500 hover:bg-yellow-600 shadow-md hover:scale-105 transition-transform">
                         📊 التقارير
                     </a>
-                  
+
                       <a href="{{ route('fuel.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-teal-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
                         ⛽ تعبئة الوقود
                     </a>
@@ -36,14 +36,14 @@
                          اكواد تم صرفهم
                     </a>
                         <a href="{{ route('vehicles.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:scale-105 transition-transform">
-                        ⛽  بيانات مطلوبة 
+                        ⛽  بيانات مطلوبة
                     </a>
 
                     {{-- <a href="{{ route('fuel.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-600 shadow-md hover:scale-105 transition-transform">
                         ⛽ تعبئة الوقود جديد
                     </a> --}}
-                 
-                 
+
+
                 <!-- Logout -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -91,7 +91,7 @@
                          اكواد تم صرفهم
                     </a>
                         <a href="{{ route('vehicles.create') }}" class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md hover:scale-105 transition-transform">
-                        ⛽  بيانات مطلوبة 
+                        ⛽  بيانات مطلوبة
                     </a>
 
                 <form method="POST" action="{{ route('logout') }}">

@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-auth-card title="تسجيل الدخول" subtitle="منظومة تعبئة الوقود الإلكترونية"
+    <x-auth-card title="تسجيل الدخول" subtitle="نموذجًا عمليًا لتطبيقات إدارة المستشفيات"
                  action="{{ route('login') }}" buttonText="تسجيل الدخول">
 
         <div>

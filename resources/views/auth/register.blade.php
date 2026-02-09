@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-auth-card title="إنشاء حساب جديد" subtitle="منظومة تعبئة الوقود الإلكترونية"
+    <x-auth-card title="إنشاء حساب جديد" subtitle="نموذجًا عمليًا لتطبيقات إدارة المستشفيات"
                  action="{{ route('register') }}" buttonText="إنشاء الحساب">
 
         <div>

@@ -5,7 +5,7 @@
     <!-- Logo -->
     <div class="flex flex-col items-center mb-6">
 
-        <img src="{{ asset('images/2.jpg') }}" class="w-20 h-20 rounded-full shadow-lg mb-3" alt="محطة جالو">
+        <img src="{{ asset('images/3.png') }}" class="w-20 h-20 rounded-full shadow-lg mb-3" alt="محطة جالو">
         <h1 class="text-2xl font-extrabold text-gray-800 dark:text-white">{{ $title }}</h1>
         <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ $subtitle }}</p>
     </div>
